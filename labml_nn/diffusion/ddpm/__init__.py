@@ -14,7 +14,7 @@ This is a [PyTorch](https://pytorch.org) implementation/tutorial of the paper
 [Denoising Diffusion Probabilistic Models](https://papers.labml.ai/paper/2006.11239).
 
 In simple terms, we get an image from data and add noise step by step.
-Then We train a model to predict that noise at each step and use the model to
+Then we train a model to predict that noise at each step and use the model to
 generate images.
 
 The following definitions and derivations show how this works.

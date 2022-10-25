@@ -10,14 +10,14 @@ summary: >
 This is a [U-Net](../../unet/index.html) based model to predict noise
 $\textcolor{lightgreen}{\epsilon_\theta}(x_t, t)$.
 
-U-Net is a gets it's name from the U shape in the model diagram.
+U-Net gets its name from the U shape in the model diagram.
 It processes a given image by progressively lowering (halving) the feature map resolution and then
 increasing the resolution.
 There are pass-through connection at each resolution.
 
 ![U-Net diagram from paper](../../unet/unet.png)
 
-This implementation contains a bunch of modifications to original U-Net (residual blocks, multi-head attention)
+This implementation contains a bunch of modifications to the original U-Net (residual blocks, multi-head attention)
  and also adds time-step embeddings $t$.
 """
 
@@ -32,7 +32,7 @@ from labml_helpers.module import Module
 
 class Swish(Module):
     """
-    ### Swish actiavation function
+    ### Swish activation function
 
     $$x \cdot \sigma(x)$$
     """
@@ -171,7 +171,7 @@ class AttentionBlock(Module):
         * `x` has shape `[batch_size, in_channels, height, width]`
         * `t` has shape `[batch_size, time_channels]`
         """
-        # `t` is not used, but it's kept in the arguments because for the attention layer function signature
+        # `t` is not used, but it's kept in the arguments for the attention layer function signature
         # to match with `ResidualBlock`.
         _ = t
         # Get shape
@@ -278,7 +278,7 @@ class Upsample(nn.Module):
         self.conv = nn.ConvTranspose2d(n_channels, n_channels, (4, 4), (2, 2), (1, 1))
 
     def forward(self, x: torch.Tensor, t: torch.Tensor):
-        # `t` is not used, but it's kept in the arguments because for the attention layer function signature
+        # `t` is not used, but it's kept in the arguments for the attention layer function signature
         # to match with `ResidualBlock`.
         _ = t
         return self.conv(x)
@@ -294,7 +294,7 @@ class Downsample(nn.Module):
         self.conv = nn.Conv2d(n_channels, n_channels, (3, 3), (2, 2), (1, 1))
 
     def forward(self, x: torch.Tensor, t: torch.Tensor):
-        # `t` is not used, but it's kept in the arguments because for the attention layer function signature
+        # `t` is not used, but it's kept in the arguments for the attention layer function signature
         # to match with `ResidualBlock`.
         _ = t
         return self.conv(x)

@@ -208,7 +208,7 @@ class Sampler:
         * `n_steps` is $t$
         """
 
-        # Number of sampels
+        # Number of samples
         n_samples = xt.shape[0]
         # Iterate until $t$ steps
         for t_ in monit.iterate('Denoise', n_steps):
@@ -312,11 +312,11 @@ def main():
     with experiment.start():
         # No gradients
         with torch.no_grad():
-            # Sample an image with an denoising animation
+            # Sample an image with a denoising animation
             sampler.sample_animation()
 
             if False:
-                # Get some images fro data
+                # Get some images from the dataloader
                 data = next(iter(configs.data_loader)).to(configs.device)
 
                 # Create an interpolation animation

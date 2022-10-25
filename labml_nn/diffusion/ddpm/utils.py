@@ -5,7 +5,7 @@ summary: >
   Utility functions for DDPM experiment
 ---
 
-# Utility functions for [DDPM](index.html) experiemnt
+# Utility functions for the [DDPM](index.html) experiment
 """
 import torch.utils.data
 
